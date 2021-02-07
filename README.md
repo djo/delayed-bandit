@@ -44,3 +44,7 @@ source env/bin/activate
 pip install -r requirements.txt
 pytest
 ```
+
+MIT License
+
+Copyright (c) 2021 Andrii Dzhoha
