@@ -11,11 +11,15 @@ Structure of the project and currently implemented algorithms:
 
 ||Files|
 |-|-|
-|Environments|[Protocol](delayed_bandit/environments/environment.py), [Bernoulli MAB](delayed_bandit/environments/bernoulli_bandit.py)|
-|Policies|[Protocol](delayed_bandit/policies/policy.py), [Explore-Then-Commit](delayed_bandit/policies/etc.py), [Epsilon-Greedy](delayed_bandit/policies/epsilon_greedy.py), [Thompson Sampling (Beta)](delayed_bandit/policies/beta_thompson_sampling.py)|
+|Environments|[Protocol](delayed_bandit/environments/environment.py)|
+||[Bernoulli MAB](delayed_bandit/environments/bernoulli_bandit.py)|
+|Policies|[Protocol](delayed_bandit/policies/policy.py)|
+||[Uniform Random](delayed_bandit/policies/uniform_random.py)|
+||[Explore-Then-Commit](delayed_bandit/policies/etc.py)|
+||[Epsilon-Greedy](delayed_bandit/policies/epsilon_greedy.py)|
+||[Thompson Sampling (Beta distribution)](delayed_bandit/policies/beta_thompson_sampling.py)|
 |Experiments|[Bernoulli MAB under delayed feedback](delayed_bandit/experiments.py)|
-|Jupyter notebooks|*TODO: Bernoulli MAB under delayed feedback*|
-|Tests|[test module](delayed_bandit/test/)|
+|Tests|[Test module](delayed_bandit/test/)|
 
 To run experiments on Bernoulli MAB see
 ```
