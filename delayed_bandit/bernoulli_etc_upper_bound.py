@@ -6,7 +6,7 @@ from delayed_bandit.simulation import Simulation
 
 def bernoulli_etc_upper_bound(simulation: Simulation, n: int, m: int) -> float:
     """
-    Calculate an upper bound for Explore-Then-Commit in the Bernoulli bandit setting.
+    Calculate an upper bound for Explore-First in the Bernoulli bandit setting.
     :param simulation: completed Simulation
     :param n: horizon
     :param m: number of exploration per arm
@@ -33,7 +33,7 @@ def bernoulli_etc_upper_bounds(
 ) -> np.ndarray:
     """
     Calculate upper bounds on every step-th round for the given horizon
-    for Explore-Then-Commit in the Bernoulli bandit setting.
+    for Explore-First in the Bernoulli bandit setting.
     """
     upper_bounds = np.zeros(horizon, dtype=np.float32)
     start_with = num_explorations * simulation.num_arms

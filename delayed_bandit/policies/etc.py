@@ -8,7 +8,7 @@ from delayed_bandit.policies.policy import Policy
 class ETC(Policy):
     def __init__(self, num_arms: int, num_explorations: int):
         """
-        Create Explore-Then-Commit policy for stochastic bandit environment.
+        Create Explore-First policy for stochastic bandit environment.
         :param num_arms: number of arms of the bandit
         :param num_explorations: number of times the algorithm explores each arm
         """

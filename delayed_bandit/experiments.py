@@ -20,7 +20,8 @@ from delayed_bandit.simulation import simulate, Simulation
 
 def bernoulli_experiments():
     """
-    Run experiments for Bernoulli bandit with registered policies Explore-Then-Commit and Epsilon-Greedy.
+    Run experiments for Bernoulli bandit with registered policies.
+
     Results from all settings (different delay samplings) are produced in CSV files for further analysis,
     one might want to run a significant number of experiments and aggregate it later by removing outliers
     and averaging results. Delay sampling is fixated among runs.
@@ -38,7 +39,7 @@ def bernoulli_experiments():
     )
     parser.add_argument(
         "--etc-explorations",
-        help="number of explorations in Explore-Then-Commit",
+        help="number of explorations in Explore-First",
         required=False,
         type=int,
         default=100,
