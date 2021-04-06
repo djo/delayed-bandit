@@ -14,6 +14,7 @@ from delayed_bandit.policies.beta_thompson_sampling import BetaThompsonSampling
 from delayed_bandit.policies.epsilon_greedy import EpsilonGreedy
 from delayed_bandit.policies.etc import ETC
 from delayed_bandit.policies.policy import Policy
+from delayed_bandit.policies.uniform_random import UniformRandom
 from delayed_bandit.simulation import simulate, Simulation
 
 
@@ -121,6 +122,15 @@ def bernoulli_experiments():
                 delays=delays,
             )
             save(f"tsamplingb-{setting}-regrets-{i}.csv", simulation.regrets())
+
+            logging.info(f"Uniform Random under {setting}")
+            simulation = experiment(
+                environment=environment,
+                policy=UniformRandom(num_arms=num_arms, rng=rng),
+                horizon=horizon,
+                delays=delays,
+            )
+            save(f"urandomb-{setting}-regrets-{i}.csv", simulation.regrets())
 
 
 def experiment(
