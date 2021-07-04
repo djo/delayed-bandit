@@ -2,14 +2,9 @@
 
 ![Build](https://github.com/djo/delayed-bandit/workflows/Python%20application/badge.svg)
 
-Provides the framework for numerical experiments to emulate the stochastic stationary environment with no delays
-for the algorithms designed for the sequential resource allocation (under MAB problem) when rewards are delayed.
-
-Created as a part of the paper "Multi-armed bandit problem in the delayed setting"
-(*in print*) to provide the framework for numerical experiments.
-
-Implementation of the framework to incorporate the existing algorithms into the stochastic environment under delays
-is based on [Online Learning under Delayed Feedback](http://proceedings.mlr.press/v28/joulani13.html) paper.
+Provides the framework for numerical experiments to simulate the multi-armed bandit problem
+in the stochastic stationary environment with delays. Part of the paper [Bernoulli multi-armed bandit problem under delayed feedback](https://djo.github.io/assets/bernoulli-multi-armed-bandit-problem-under-delayed-feedback.pdf)
+([Journal](https://bphm.knu.ua/index.php/bphm/article/view/214)).
 
 Structure of the project and currently implemented algorithms:
 
@@ -48,7 +43,7 @@ The sampling of delays might be fixated over the horizon.
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
-pytest
+./pychecks.sh
 ```
 
 MIT License

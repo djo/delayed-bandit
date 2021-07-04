@@ -38,9 +38,7 @@ def bernoulli_etc_upper_bounds(
     upper_bounds = np.zeros(horizon, dtype=np.float32)
     start_with = num_explorations * simulation.num_arms
     for n in range(start_with, horizon + 1, step):
-        bound = bernoulli_etc_upper_bound(
-            simulation=simulation, n=n, m=num_explorations
-        )
+        bound = bernoulli_etc_upper_bound(simulation=simulation, n=n, m=num_explorations)
         upper_bounds[n - 1] = bound
     upper_bounds[horizon - 1] = bernoulli_etc_upper_bound(
         simulation=simulation, n=horizon, m=num_explorations

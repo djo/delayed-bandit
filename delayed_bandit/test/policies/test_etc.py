@@ -23,9 +23,7 @@ class TestETC:
     def test_feed_reward(self):
         etc = ETC(num_arms=1, num_explorations=1)
         assert etc.choice(0) == 0
-        with pytest.raises(
-            ValueError, match=r"Expected the reward for arm 0, but got for 1"
-        ):
+        with pytest.raises(ValueError, match=r"Expected the reward for arm 0, but got for 1"):
             etc.feed_reward(t=0, arm=1, reward=0.0)
         etc.feed_reward(t=0, arm=0, reward=0.0)
 

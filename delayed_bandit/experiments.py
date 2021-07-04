@@ -23,9 +23,10 @@ def bernoulli_experiments():
     """
     Run experiments for Bernoulli bandit with registered policies.
 
-    Results from all settings (different delay samplings) are produced in CSV files for further analysis,
-    one might want to run a significant number of experiments and aggregate it later by removing outliers
-    and averaging results. Delay sampling is fixated among runs.
+    Results from all settings (different delay samplings) are produced in CSV files
+    for further analysis, one might want to run a significant number of experiments
+    and aggregate it later by removing outliers and averaging results.
+    Delay sampling is fixated among runs.
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs", help="number of simulations", required=False, type=int, default=1)

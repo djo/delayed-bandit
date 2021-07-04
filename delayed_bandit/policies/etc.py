@@ -30,9 +30,7 @@ class ETC(Policy):
             self._current_arm = -1
             return
         if arm != self._current_arm:
-            raise ValueError(
-                f"Expected the reward for arm {self._current_arm}, but got for {arm}"
-            )
+            raise ValueError(f"Expected the reward for arm {self._current_arm}, but got for {arm}")
         self.cumulative_rewards[arm] += reward
         return
 

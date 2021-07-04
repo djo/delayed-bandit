@@ -13,9 +13,7 @@ class TestUniformRandom:
     def test_feed_reward(self):
         uniform = UniformRandom(num_arms=2, rng=Generator(PCG64(40)))
         assert uniform.choice(0) == 1
-        with pytest.raises(
-            ValueError, match=r"Expected the reward for arm 1, but got for 0"
-        ):
+        with pytest.raises(ValueError, match=r"Expected the reward for arm 1, but got for 0"):
             uniform.feed_reward(t=0, arm=0, reward=0.0)
         uniform.feed_reward(t=0, arm=1, reward=0.0)
 

@@ -29,9 +29,7 @@ class BetaThompsonSampling(Policy):
 
     def feed_reward(self, t: int, arm: int, reward: float):
         if arm != self._current_arm:
-            raise ValueError(
-                f"Expected the reward for arm {self._current_arm}, but got for {arm}"
-            )
+            raise ValueError(f"Expected the reward for arm {self._current_arm}, but got for {arm}")
         self.cumulative_rewards[arm] += round(reward)
         self.arms_stats[arm] += 1
         return

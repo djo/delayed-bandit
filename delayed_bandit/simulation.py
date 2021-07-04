@@ -8,9 +8,7 @@ from delayed_bandit.policies.policy import Policy
 
 
 class Simulation:
-    def __init__(
-        self, horizon: int, environment: Environment, policy: Policy, delays: np.ndarray
-    ):
+    def __init__(self, horizon: int, environment: Environment, policy: Policy, delays: np.ndarray):
         self.horizon = horizon
         self.num_arms = environment.num_arms()
         self.environment = environment
@@ -18,16 +16,14 @@ class Simulation:
         # arms pulled in the environment on these rounds (indices in the array)
         self.arms = np.full(horizon, fill_value=-1, dtype=np.int32)
         # rewards that supposed to be returned on these rounds in case of no delay,
-        # it'll be taken into account for the regret calculation if the delay doesn't extend the horizon
+        # taken into account for the regret calculation if the delay doesn't extend the horizon
         self.rewards = np.zeros(horizon, dtype=np.float32)
         # delays on each round
         self.delays = delays
         # FIFO queue per arm with realized rewards
         self.queues: List[queue.Queue] = [queue.Queue() for _ in range(self.num_arms)]
         # rewards to be realized at that round in tuple (arm, reward)
-        self.future_rewards: List[List[Tuple[int, float]]] = [
-            [] for _ in range(horizon)
-        ]
+        self.future_rewards: List[List[Tuple[int, float]]] = [[] for _ in range(horizon)]
 
     def regret(self, n: int) -> float:
         """
@@ -53,12 +49,8 @@ class Simulation:
         return stats
 
 
-def simulate(
-    horizon: int, environment: Environment, policy: Policy, delays: np.ndarray
-):
-    simulation = Simulation(
-        horizon=horizon, environment=environment, policy=policy, delays=delays
-    )
+def simulate(horizon: int, environment: Environment, policy: Policy, delays: np.ndarray):
+    simulation = Simulation(horizon=horizon, environment=environment, policy=policy, delays=delays)
     # simulated round for the policy to emulate sequential decision making
     policy_t = 0
     arm = policy.choice(policy_t)
