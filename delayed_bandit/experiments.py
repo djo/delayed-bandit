@@ -14,6 +14,7 @@ from delayed_bandit.policies.beta_thompson_sampling import BetaThompsonSampling
 from delayed_bandit.policies.epsilon_greedy import EpsilonGreedy
 from delayed_bandit.policies.etc import ETC
 from delayed_bandit.policies.policy import Policy
+from delayed_bandit.policies.ucb import UCB
 from delayed_bandit.policies.uniform_random import UniformRandom
 from delayed_bandit.simulation import simulate, Simulation
 
@@ -27,9 +28,7 @@ def bernoulli_experiments():
     and averaging results. Delay sampling is fixated among runs.
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--runs", help="number of simulations", required=False, type=int, default=1
-    )
+    parser.add_argument("--runs", help="number of simulations", required=False, type=int, default=1)
     parser.add_argument(
         "--horizon",
         help="number of rounds to play",
@@ -52,8 +51,13 @@ def bernoulli_experiments():
         default=0.1,
     )
     parser.add_argument(
-        "--output", help="directory output path", required=False, type=str
+        "--ucb-alpha",
+        help="alpha in Upper Confidence Bound",
+        required=False,
+        type=float,
+        default=0.5,
     )
+    parser.add_argument("--output", help="directory output path", required=False, type=str)
     parser.add_argument("--seed", help="random seed", required=False, type=int)
     args = parser.parse_args()
 
@@ -74,6 +78,7 @@ def bernoulli_experiments():
     means = [0.77, 0.8]  # the order is being shuffled at each run
     etc_num_explorations = args.etc_explorations
     egreedy_epsilon = args.egreedy_epsilon
+    ucb_alpha = args.alpha
 
     settings = [
         ("delay-const-0", np.zeros(horizon, dtype=np.int32)),
@@ -107,9 +112,7 @@ def bernoulli_experiments():
             logging.info(f"Epsilon-Greedy under {setting}")
             simulation = experiment(
                 environment=environment,
-                policy=EpsilonGreedy(
-                    num_arms=num_arms, epsilon=egreedy_epsilon, rng=rng
-                ),
+                policy=EpsilonGreedy(num_arms=num_arms, epsilon=egreedy_epsilon, rng=rng),
                 horizon=horizon,
                 delays=delays,
             )
@@ -132,6 +135,15 @@ def bernoulli_experiments():
                 delays=delays,
             )
             save(f"urandomb-{setting}-regrets-{i}.csv", simulation.regrets())
+
+            logging.info(f"Upper Confidence Bound {setting}")
+            simulation = experiment(
+                environment=environment,
+                policy=UCB(num_arms=num_arms, alpha=ucb_alpha, rng=rng),
+                horizon=horizon,
+                delays=delays,
+            )
+            save(f"ucbb-{setting}-regrets-{i}.csv", simulation.regrets())
 
 
 def experiment(

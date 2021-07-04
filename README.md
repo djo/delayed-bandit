@@ -21,6 +21,7 @@ Structure of the project and currently implemented algorithms:
 ||[Uniform Random](delayed_bandit/policies/uniform_random.py)|
 ||[Explore-First](delayed_bandit/policies/etc.py)|
 ||[Epsilon-Greedy](delayed_bandit/policies/epsilon_greedy.py)|
+||[Upper Confidence Bound](delayed_bandit/policies/ucb.py)|
 ||[Thompson Sampling (Beta distribution)](delayed_bandit/policies/beta_thompson_sampling.py)|
 |Experiments|[Bernoulli MAB under delayed feedback](delayed_bandit/experiments.py)|
 |Tests|[Test module](delayed_bandit/test/)|
