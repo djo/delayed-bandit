@@ -44,8 +44,8 @@ class Simulation:
     def arms_stats(self) -> np.ndarray:
         stats = np.zeros(self.num_arms, dtype=np.int32)
         arms, counts = np.unique(self.arms, return_counts=True)
-        for a in arms:
-            stats[a] = counts[a]
+        for i, arm in enumerate(arms):
+            stats[arm] = counts[i]
         return stats
 
 

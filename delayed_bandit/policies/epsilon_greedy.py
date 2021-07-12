@@ -42,3 +42,6 @@ class EpsilonGreedy(Policy):
         i = np.argmax(self.cumulative_rewards[idx] / self.arms_stats[idx])
         arm = idx[0][i]
         return arm, self.cumulative_rewards[arm] / self.arms_stats[arm]
+
+    def name(self) -> str:
+        return f"Epsilon-Greedy(epsilon={self._epsilon})"

@@ -1,5 +1,7 @@
 from typing import Protocol, Tuple
 
+import numpy as np
+
 
 class Environment(Protocol):
     def pull(self, arm: int) -> float:
@@ -29,4 +31,7 @@ class Environment(Protocol):
         ...
 
     def num_arms(self) -> int:
+        ...
+
+    def means(self) -> np.ndarray:
         ...

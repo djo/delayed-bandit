@@ -28,3 +28,6 @@ class Policy(Protocol):
         breaking ties by choosing the smallest index.
         """
         ...
+
+    def name(self) -> str:
+        ...

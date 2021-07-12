@@ -26,9 +26,12 @@ class UCB(Policy):
             self._current_arm = t
             return self._current_arm
 
-        indexes = np.array([self._index(t=t, arm=i) for i in range(self._num_arms)])
+        arms = np.arange(self._num_arms)
+        indexes = np.array([self._index(t=t, arm=i) for i in arms])
         idx = np.where(indexes == np.max(indexes))
-        return self._rng.choice(idx)
+        best_arms = arms[idx]
+        self._current_arm = self._rng.choice(best_arms)
+        return self._current_arm
 
     def feed_reward(self, t: int, arm: int, reward: float):
         if arm != self._current_arm:
@@ -49,3 +52,6 @@ class UCB(Policy):
         mean = self.cumulative_rewards[arm] / self.arms_stats[arm]
         confidence_radius = math.sqrt((self._alpha * math.log(t + 1)) / self.arms_stats[arm])
         return mean + confidence_radius
+
+    def name(self) -> str:
+        return f"UCB(alpha={self._alpha})"

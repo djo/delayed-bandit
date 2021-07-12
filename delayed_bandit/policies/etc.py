@@ -37,3 +37,6 @@ class ETC(Policy):
     def empirically_best_arm(self) -> Tuple[int, float]:
         arm = np.argmax(self.cumulative_rewards)
         return int(arm), self.cumulative_rewards[arm] / self._num_explorations
+
+    def name(self) -> str:
+        return f"Explore-First(m={self._num_explorations})"
