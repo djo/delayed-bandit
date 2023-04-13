@@ -2,6 +2,14 @@
 
 ![Build](https://github.com/djo/delayed-bandit/workflows/Python%20application/badge.svg)
 
+The framework for numerical experiments to simulate the multi-armed bandit in the stochastic stationary environment with delays.
+
+## Beta Upper Confidence Bound Policy for the Design of Clinical Trials, 2023
+
+Evaluation of the adapted to delays policies using the publicly available dataset The International Stroke Trial. See [this notebook](Beta-Upper-Confidence-Bound-Policy-for-the-Design-of-Clinical-Trials.ipynb) for the analysis and simulation. 
+
+## Bernoulli multi-armed bandit problem under delayed feedback, 2021
+
 Provides the framework for numerical experiments to simulate the multi-armed bandit problem
 in the stochastic stationary environment with delays. Part of the paper [Bernoulli multi-armed bandit problem under delayed feedback](https://djo.github.io/assets/bernoulli-multi-armed-bandit-problem-under-delayed-feedback.pdf)
 ([Journal](https://bphm.knu.ua/index.php/bphm/article/view/214)).
@@ -48,4 +56,4 @@ pip install -r requirements.txt
 
 MIT License
 
-Copyright (c) 2021 Andrii Dzhoha
+Copyright (c) 2023 Andrii Dzhoha
